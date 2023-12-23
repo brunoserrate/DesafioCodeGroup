@@ -1,0 +1,53 @@
+
+# Web
+/fhweb/.DS_Store
+/fhweb/.thumbs.db
+/fhweb/node_modules
+
+# Quasar core related directories
+/fhweb/.quasar
+/fhweb/dist
+
+# Cordova related directories and files
+/fhweb/src-cordova/node_modules
+/fhweb/src-cordova/platforms
+/fhweb/src-cordova/plugins
+/fhweb/src-cordova/www
+
+# Capacitor related directories and files
+/fhweb/src-capacitor/www
+/fhweb/src-capacitor/node_modules
+
+# BEX related directories and files
+/fhweb/src-bex/www
+/fhweb/src-bex/js/core
+
+# Log files
+/fhweb/npm-debug.log*
+/fhweb/yarn-debug.log*
+/fhweb/yarn-error.log*
+
+# Editor directories and files
+/fhweb/.idea
+/fhweb/*.suo
+/fhweb/*.ntvs*
+/fhweb/*.njsproj
+/fhweb/*.sln
+
+# Core
+/fhcore/node_modules
+/fhcore/public/hot
+/fhcore/public/storage
+/fhcore/storage/*.key
+/fhcore/vendor
+/fhcore/.env
+/fhcore/.env.backup
+/fhcore/.phpunit.result.cache
+/fhcore/Homestead.json
+/fhcore/Homestead.yaml
+/fhcore/npm-debug.log
+/fhcore/yarn-error.log
+
+# Dev
+.vscode
+

@@ -4,7 +4,17 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '', component: () => import('pages/Index.vue'), meta: { public: false } },
+      { path: 'jogadores', component: () => import('pages/Jogadores.vue'), meta: { public: false } },
+      { path: 'partidas', component: () => import('pages/Partidas.vue'), meta: { public: false } },
+
+    ]
+  },
+  {
+    path: '/login',
+    component: () => import('layouts/Auth.vue'),
+    children: [
+      { path: '', component: () => import('pages/Login.vue'), meta: { public: true } },
     ]
   },
 

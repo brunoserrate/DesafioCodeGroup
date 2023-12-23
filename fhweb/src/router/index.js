@@ -1,6 +1,9 @@
 import { route } from 'quasar/wrappers'
+import { SessionStorage } from 'quasar'
+
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
+
 
 import axios from 'axios'
 
@@ -45,6 +48,26 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
+  })
+
+  Router.beforeEach((to, from, next) => {
+
+    if(to.matched.some(record => record.meta.public)) {
+      next()
+    }
+    else {
+      let user = JSON.parse( SessionStorage.getItem('auth') )
+
+      if(user !== null){
+        next()
+      }
+      else{
+        next({
+          path: '/login'
+        })
+      }
+    }
+
   })
 
   return Router

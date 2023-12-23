@@ -1,0 +1,55 @@
+.login {
+    .username {
+        .q-field--filled .q-field__control {
+            border-radius: 25px 25px 0 0;
+            background: rgba(0, 0, 0, 0.05);
+        }
+    }
+    .password {
+        .q-field--filled .q-field__control {
+            border-radius: 0 0 25px 25px;
+            background: rgba(0, 0, 0, 0.05);
+        }
+    }
+    .q-field__label {
+        font-size: 18px;
+    }
+}
+.menu-perfil {
+    box-shadow: none;
+    background: #e5e5e5;
+    font-family: "Dosis";
+    font-size: 1.2em;
+    .div-menu-perfil {
+        padding: 0px 0 0px 0;
+        display: flex;
+        justify-content: center;
+        .item-section-item {
+            .item-nome {
+                font-size: 12px;
+            }
+        }
+        .div-perfil {
+            padding-top: 12px;
+            background: #f2cfcf;
+        }
+        .list-items {
+            .list-item-items {
+                .item-nome {
+                    padding: 0 0px 0 67px;
+                }
+            }
+        }
+    }
+}
+.adicionar-cliente {
+    .row-conteudo {
+        .card-formulario {
+            .expanse-header-adicionar-telefone {
+                background: #e8e8e8;
+                font-family: "Dosis";
+                font-size: 1.2em;
+            }
+        }
+    }
+}

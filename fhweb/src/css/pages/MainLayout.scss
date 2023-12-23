@@ -1,0 +1,40 @@
+.mainLayout {
+    .header {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        border-top: solid 4px var(--q-secondary);
+        // position: relative; /* Para criar um contexto de empilhamento para os elementos filhos */
+        position: fixed; /* Para criar um contexto de empilhamento para os elementos filhos */
+        .toolbar-title {
+            display: flex;
+            align-items: center;
+        }
+        .background-image {
+            background-image: url('src/assets/images/background-header-2.svg') !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+            opacity: 0.2; /* Defina a opacidade desejada */
+            position: absolute; /* Posicione a imagem absolutamente em relação ao elemento pai */
+            top: 0;
+            left: 71%;
+            width: 29%;
+            height: 100%;
+            z-index: -1; /* Certifique-se de que a imagem está atrás do conteúdo do header */
+        }
+        .title {
+            text-decoration: none;
+            font-family: Dosis;
+            margin-right: 20px;
+            span {
+                color: var(--q-secondary);
+            }
+        }
+        .icon-crown {
+            width: 40px;
+        }
+    }
+    .container-principal {
+        background: #e9e9e9;
+    }
+}

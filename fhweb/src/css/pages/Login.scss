@@ -1,0 +1,41 @@
+.login {
+    .card-login {
+        width: 500px;
+        height: 467px;
+        padding: 25px 35px;
+        border-radius: 20px;
+        .row-card-title {
+            font-family: 'Dosis';
+            font-size: 2em;
+            .icon-crown {
+                cursor: pointer;
+                transition: rotate 0.6s ease;
+                &:hover {
+                    rotate: 359deg;
+                }
+            }
+            p {
+                span {
+                    color: var(--q-secondary);
+                }
+            }
+            .subtitle {
+                text-align: center;
+                font-family: 'Poppins';
+                font-size: 0.55em;
+                color: #676767;
+            }
+        }
+        .username, .password {
+            font-family: 'Dosis';
+            .inputs {
+                font-size: 1.2em !important;
+            }
+        }
+        .botao-entrar {
+            width: 100%;
+            font-family: 'Poppins';
+            border-radius: 10px;
+        }
+    }
+}

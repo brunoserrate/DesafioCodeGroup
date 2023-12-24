@@ -1,5 +1,6 @@
 import { boot } from 'quasar/wrappers'
 import axios from 'axios'
+import { SessionStorage } from 'quasar'
 
 // Be careful when using SSR for cross-request state pollution
 // due to creating a Singleton instance here;
@@ -11,6 +12,7 @@ const api = axios.create({
   withCredentials: true
 })
 
+axios.defaults.withCredentials = true
 
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api

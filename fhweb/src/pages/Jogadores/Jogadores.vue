@@ -20,6 +20,7 @@
         <formulario
           v-else
           :form="form"
+          :operacao="operacao"
           @cancelar="cancelar"
         />
 
@@ -37,7 +38,7 @@ export default {
     return {
       form: {
         nome: '',
-        posicao: '',
+        posicao_id: '',
         nivel: '',
       },
       operacao: 'listagem'
@@ -51,7 +52,11 @@ export default {
   },
   methods: {
     editar(jogador) {
-      this.form = jogador
+      this.form = {
+        nome: jogador.nome,
+        posicao_id: jogador.posicao_time_id,
+        nivel: jogador.nivel,
+      }
 
       this.operacao = 'edicao'
     },
@@ -62,7 +67,7 @@ export default {
       this.operacao = 'incluir'
       this.form = {
         nome: '',
-        posicao: '',
+        posicao_id: '',
         nivel: '',
       }
     }

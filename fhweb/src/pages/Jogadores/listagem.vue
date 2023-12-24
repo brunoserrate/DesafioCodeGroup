@@ -7,8 +7,7 @@
     </div>
     <div class="row q-pa-md justify-end">
       <div class="col-2">
-        <q-btn color="primary"
-         label="Novo jogador" @click="incluirJogador"/>
+        <q-btn color="primary" label="Novo jogador" @click="incluirJogador" />
       </div>
     </div>
     <q-card flat>
@@ -21,7 +20,7 @@
           </q-tr>
         </template>
         <template v-slot:body="props">
-          <q-tr :props="props" @click="onRowClick(props.row)">
+          <q-tr :props="props">
             <q-td key="nome" :props="props">
               {{ props.row.nome }}
             </q-td>
@@ -32,9 +31,9 @@
               {{ props.row.nivel }}
             </q-td>
             <q-td key="actions" :props="props">
-              <q-icon name="edit" class="icon icon-edit" @click="toEdit(props.row.id)" />
+              <q-icon name="edit" class="icon icon-edit" @click="editarJogador(props.row)" />
               <q-icon name="delete" class="icon icon-delete"
-                @click="cliente_id = `${props.row.id}`, deletar_jogador = true" />
+                @click="jogador_id = `${props.row.id}`, deletar_jogador = true" />
             </q-td>
           </q-tr>
         </template>
@@ -76,7 +75,7 @@ export default {
       },
       deletar_jogador: false,
       loading: false,
-      cliente_id: null
+      jogador_id: null
     }
   },
   components: {
@@ -103,11 +102,24 @@ export default {
       this.$emit('editar', jogador)
     },
     deletarJogador() {
-      try {
-        this.deletar_jogador = false
-      } catch (error) {
+      let that = this
 
-      }
+      that.loading = true
+
+      that.$axios.delete(that.$_pathAPI + '/jogador/' + that.jogador_id)
+        .then(function (response) {
+          that.loading = false
+          that.deletar_jogador = false
+
+          that.jogador_id = null
+
+          that.carregarJogadores()
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+
+      this.deletar_jogador = false
     }
   }
 

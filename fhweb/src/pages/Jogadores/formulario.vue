@@ -13,7 +13,13 @@
                 filled
                 v-model="form.posicao_id"
                 :options="posicoes"
+                type="number"
                 label="Posição"
+                option-value="id"
+                option-label="nome"
+                emit-value
+                map-options
+
                 lazy-rules
                 :rules="[val => !!val || 'Campo obrigatório']"
             />
@@ -48,11 +54,16 @@ export default {
         form: {
             type: Object,
             required: false
+        },
+        operacao: {
+            type: String,
+            required: false
         }
     },
     data() {
         return {
-            posicoes: []
+            posicoes: [],
+            posicao_id: null
         }
     },
     mounted() {
@@ -65,14 +76,33 @@ export default {
             that.$axios.get(that.$_pathAPI + '/posicao_time')
                 .then(function (response) {
 
-                    that.posicoes = []
+                    that.posicoes = response.data.data
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+        },
+        salvarRegistro(){
+            if (this.operacao == 'incluir') {
+                this.incluirRegistro()
+            } else {
+                this.editarRegistro()
+            }
+        },
+        editarRegistro(){
+            let that = this
 
-                    response.data.data.forEach(posicao => {
-                        that.posicoes.push({
-                            label: posicao.nome,
-                            value: posicao.id
-                        })
-                    });
+            let params = {
+                nome: that.form.nome,
+                posicao_time_id: that.form.posicao_id.value,
+                nivel: that.form.nivel
+            }
+
+            console.log(params)
+
+            that.$axios.put(that.$_pathAPI + '/jogador/' + that.form.id, params)
+                .then(function (response) {
+                    that.$emit('cancelar')
                 })
                 .catch(function (error) {
                     console.log(error)

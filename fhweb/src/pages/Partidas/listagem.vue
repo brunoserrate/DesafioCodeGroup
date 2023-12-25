@@ -25,7 +25,7 @@
                             {{ props.row.nome }}
                         </q-td>
                         <q-td key="data_partida" :props="props">
-                            {{ props.row.data_partida }}
+                            {{ formatDate(props.row.data_partida)  }}
                         </q-td>
                         <q-td key="qtd_jogadores_time" :props="props">
                             {{ props.row.qtd_jogadores_time }}
@@ -35,7 +35,7 @@
                         </q-td>
                         <q-td key="actions" :props="props">
                             <!-- <q-icon name="edit" class="icon icon-edit" @click="editarPartida(props.row)" /> -->
-                            <q-icon name="delete" class="icon icon-delete"
+                            <q-icon name="delete" class="icon"
                                 @click="partida_id = `${props.row.id}`, deletar_partida = true" />
                         </q-td>
                     </q-tr>
@@ -61,6 +61,8 @@
 </template>
 
 <script>
+import { date } from 'quasar'
+
 export default {
     name: 'PartidasListagem',
     data() {
@@ -98,6 +100,20 @@ export default {
                 .catch(function (error) {
                     console.log(error)
                 })
+        },
+        formatDate(rawDate) {
+            if (!rawDate) return ''
+            // 2023-12-27T12:05:00.000000Z
+            let y, m, d, h, min, s
+
+            y = rawDate.substring(0, 4)
+            m = rawDate.substring(5, 7)
+            d = rawDate.substring(8, 10)
+            h = rawDate.substring(11, 13)
+            min = rawDate.substring(14, 16)
+            s = rawDate.substring(17, 19)
+
+            return `${d}/${m}/${y} ${h}:${min}`
         },
         incluirPartida() {
             this.$emit('incluir')

@@ -5,15 +5,27 @@
                 <q-input v-model="form.nome" label="Nome" />
             </div>
             <div class="col">
-                <q-input filled v-model="form.data_partida" mask="date" :rules="['date']">
-                    <template v-slot:append>
+                <q-input filled v-model="form.data_partida">
+                    <template v-slot:prepend>
                         <q-icon name="event" class="cursor-pointer">
                             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                                <q-date v-model="form.data_partida">
+                                <q-date v-model="form.data_partida" mask="DD/MM/YYYY HH:mm">
                                     <div class="row items-center justify-end">
                                         <q-btn v-close-popup label="Close" color="primary" flat />
                                     </div>
                                 </q-date>
+                            </q-popup-proxy>
+                        </q-icon>
+                    </template>
+
+                    <template v-slot:append>
+                        <q-icon name="access_time" class="cursor-pointer">
+                            <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                <q-time v-model="form.data_partida" mask="DD/MM/YYYY HH:mm" format24h>
+                                    <div class="row items-center justify-end">
+                                        <q-btn v-close-popup label="Close" color="primary" flat />
+                                    </div>
+                                </q-time>
                             </q-popup-proxy>
                         </q-icon>
                     </template>
@@ -179,6 +191,7 @@ export default {
             let jogadoresConfirmados = that.jogadores_confirmados;
 
             if (gerarComTodosJogadores) {
+                jogadoresConfirmados = [];
                 jogadoresConfirmados = that.jogadores
             }
 

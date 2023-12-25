@@ -7,6 +7,7 @@ use App\Repositories\BaseRepository;
 
 use App\Repositories\TimeRepository;
 
+use DateTime;
 /**
  * Class PartidaRepository
  * @package App\Repositories
@@ -53,7 +54,7 @@ class PartidaRepository extends BaseRepository
             'times_gerados' => count($times),
         ];
 
-        $partida['data_partida'] = date('Y-m-d H:i:s', strtotime($partida['data_partida']));
+        $partida['data_partida'] = DateTime::createFromFormat('d/m/Y H:i', $partida['data_partida'])->format('Y-m-d H:i:s');
 
         $model = $this->model->newInstance($partida);
 

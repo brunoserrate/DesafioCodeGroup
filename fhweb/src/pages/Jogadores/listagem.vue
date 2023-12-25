@@ -59,7 +59,7 @@
 
 <script>
 export default {
-  name: 'JogaodresListagem',
+  name: 'JogadoresListagem',
   data() {
     return {
       jogadores_header: [
